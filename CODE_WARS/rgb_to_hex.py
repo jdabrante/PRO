@@ -15,10 +15,10 @@ def rgb(r,g,b):
     h_rgb = ""
     for d_code in d_rgb:
         if d_code > 255:
-            d_code = f'{255:x}'
+            d_code = f'{255:02x}'
         elif d_code < 0:
-            d_code = f'{0:x}'
+            d_code = f'{0:02x}'
         else: 
-            d_code = f'{d_code:x}'
+            d_code = f'{d_code:02x}'
         h_rgb += d_code
     return h_rgb.upper()
