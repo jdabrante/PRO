@@ -20,7 +20,7 @@ def total_left_di (m: list)-> int:
         for i in range(len(m)):
             for j in range(len(m)):
                 if i == j:
-                    di += matrix[i][j]
+                    di += m[i][j]
     return di
 
 def total_right_di (m: list)-> int:
