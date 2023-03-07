@@ -28,8 +28,6 @@ def total_right_di (m: list)-> int:
     di = total_left_di(change_m)
     return di
             
-
-
 def is_magic_square(m):
     total = []
     total.append(total_right_di(m))
