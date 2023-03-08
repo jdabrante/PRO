@@ -28,7 +28,7 @@ def count_diagonal (values: list)-> int:
     di = []
     for i in range(len(values)):
         for j in range(len(values)):
-            if i == j:
+            if i is j:
                 di.append(values[i][j])
     return sum(di) 
 
