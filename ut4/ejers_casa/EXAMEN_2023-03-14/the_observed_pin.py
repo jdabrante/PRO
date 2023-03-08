@@ -55,10 +55,10 @@ def cartesian_product(observed: str, current_result=[]) -> list:
         for i in range(len(current_result)):
             for j in range(len(pins_dict[pushed_button])):
                 current_result[i] += pins_dict[pushed_button][j]
-        if len(observed) <= 1:
-            return current_result
-        else:
-            return cartesian_product(observed[1:], current_result)
+    if len(observed) == 1:
+        return current_result
+    else:
+        return cartesian_product(observed[1:], current_result)
 
 
 result = cartesian_product("12")
