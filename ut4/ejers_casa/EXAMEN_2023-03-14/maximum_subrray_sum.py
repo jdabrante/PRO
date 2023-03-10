@@ -7,31 +7,18 @@
 
 # Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
 
-# def max_sequence(numbers: list, max_sum: int = 0)-> int:
-#     _sum = 0
-#     if len(numbers) == 0:
-#         return max_sum
-#     for number in numbers: 
-#         _sum += number
-#         if _sum > max_sum:
-#             max_sum = _sum
-#     return max_sequence(numbers[1:], max_sum)
+
+def max_sequence(numbers: list, max_sum: int = 0) -> int:
+    _sum = 0
+    if len(numbers) == 0:
+        return max_sum
+    for number in numbers:
+        _sum += number
+        if _sum > max_sum:
+            max_sum = _sum
+    return max_sequence(numbers[1:], max_sum)
 
 
-def comparation (numbers: list, max_sum: int)->bool:
-    if sum(numbers) > max_sum:
-        return True
-    return False
+numbers = [20, -20, 1, 2, 3, 4, 5]
 
-def max_sequence(numbers: list, max_sum: int = 0)-> int: 
-    while True:
-        if len(numbers) == 0:
-            return max_sum
-        if comparation(numbers,max_sum):
-            max_sum = sum(numbers)
-        if comparation(numbers[1:], max_sum):
-            max_sum = sum(numbers[1:])
-        if comparation(numbers[:len(numbers)-1], max_sum):
-            max_sum = sum(numbers[:len(numbers)-1])
-        numbers = numbers[1:len(numbers)-1]
-    
+print(max_sequence(numbers))
