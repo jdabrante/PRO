@@ -8,7 +8,6 @@ with open(VENDING_PATH, encoding="utf8") as f1, open(OPERATION_PATH, encoding="u
     coins = f1.readline().split()
     coins = [int(coin) for coin in coins]
 
-    
     for line in f1:
         line = line.strip().split()
         products_dict[line[0]]=line[1:]
