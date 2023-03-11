@@ -2,45 +2,50 @@
 # CUADRADO M�GICO
 # ***************
 
-total_row = lambda m: [sum(values) for values in m]
+def comprobation (values: set)-> int|bool:
+    if len(values) == 1:
+        value_list = list(values)
+        number = value_list[0]
+        return number
+    elif len(values) == 0:
+        return sum(values)
+    return False
+  
+def count_rows(values: list)-> bool|int:
+    rows =  set([sum(value) for value in values])
+    return comprobation(rows)
 
-def total_column (m: list)-> list: 
-    tcolumn = []
-    if m:
-        for i in range(len(m)):
-            column = []
-            for value in m:
-                column.append(value[i])
-            tcolumn.append(sum(column))
-    return tcolumn
+def count_columns(values: list)-> bool|int:
+    columns = set()
+    for i in range(len(values)):
+        column = 0
+        for value in values: 
+            column += value[i]
+        columns.add(column)
+    return comprobation(columns)
 
-def total_left_di (m: list)-> int:
-    di = 0
-    if m:
-        for i in range(len(m)):
-            for j in range(len(m)):
-                if i == j:
-                    di += m[i][j]
-    return di
+def count_diagonal (values: list)-> int:
+    di = []
+    for i in range(len(values)):
+        for j in range(len(values)):
+            if i is j:
+                di.append(values[i][j])
+    return sum(di) 
 
-def total_right_di (m: list)-> int:
-    change_m = [ value[::-1] for value in m]
-    di = total_left_di(change_m)
-    return di
-            
-
+def count_reverse_diagonal (values: list)-> int:
+    reverse_values = [value[::-1] for value in values]
+    return count_diagonal(reverse_values)
 
 def is_magic_square(m):
-    total = []
-    total.append(total_right_di(m))
-    total.append(total_left_di(m))
-    for value in total_column(m):
-        total.append(value)
-    for value in total_row(m):
-        total.append(value)
-
-    if len(total) == total.count(total[0]):
+    row = count_rows(m)
+    column = count_columns(m)
+    right_diagonal = count_diagonal(m)
+    left_diagonal = count_diagonal(m)
+    if row == column and column == right_diagonal and right_diagonal == left_diagonal:
         return True
-    else: 
+    else:
         return False
+
+
+
 
