@@ -4,9 +4,7 @@
 
 
 def power(x: int, n: int) -> int:
-    count += 1
-    result *= x
-
-    if count == n:
-        return result
-    return power(x, n, count, result)
+    if n == 0:
+        return 1
+    else: 
+        return x * power(x, n-1)
